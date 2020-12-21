@@ -7,7 +7,7 @@ resource "null_resource" "ticket1" {
       type        = "ssh"
       user        = "ec2-user"
       private_key = "${file("~/.ssh/bob.rsa")}"
-      host        = "${aws_instance.Test.public_ip}"
+      host        = "${aws_instance.Test.private_ip}"
     }
     source      = "userdata.sh"
     destination = "/tmp/userdata.sh"
@@ -17,7 +17,7 @@ resource "null_resource" "ticket1" {
       type        = "ssh"
       user        = "ec2-user"
       private_key = "${file("~/.ssh/bob.rsa")}"
-      host        = "${aws_instance.Test.public_ip}"
+      host        = "${aws_instance.Test.private_ip}"
     }
     inline = [
       "sudo chmod +x /tmp/userdata.sh",
