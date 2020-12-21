@@ -1,6 +1,7 @@
 resource "aws_security_group" "ticket1" {
   name        = "RFM"
   description = "Allow RFM"
+  vpc_id = "${var.vpc_id}"
 
   ingress {
     description = "TLS from VPC"
