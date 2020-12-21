@@ -8,5 +8,5 @@ variable "cidr_blocks" {
     type = "list"
 }
 variable "tags" {
-  type = map(string)
+  type = "map"
 }
