@@ -6,23 +6,22 @@ resource "null_resource" "ticket1" {
     connection {
       type        = "ssh"
       user        = "centos"
-      private_key = "${file("~/.ssh/id_rsa")}"
+      private_key = "${file("~/.ssh/bob.rsa")}"
       host        = "${aws_instance.Test.public_ip}"
-    }    
+    }
     source      = "userdata.sh"
     destination = "/tmp/userdata.sh"
-  }  
+  }
   provisioner "remote-exec" {
-      connection {
+    connection {
       type        = "ssh"
       user        = "centos"
-      private_key = "${file("~/.ssh/id_rsa")}"
+      private_key = "${file("~/.ssh/bob.rsa")}"
       host        = "${aws_instance.Test.public_ip}"
     }
     inline = [
       "sudo chmod +x /tmp/userdata.sh",
       "sudo /tmp/userdata.sh args",
-    ]    
-  
-}
+    ]
+  }
 }

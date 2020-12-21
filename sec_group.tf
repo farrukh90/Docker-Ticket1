@@ -1,20 +1,13 @@
 resource "aws_security_group" "ticket1" {
-  name        = "ticket1"
-  description = "Allow TLS inbound traffic"
+  name        = "RFM"
+  description = "Allow RFM"
 
-  ingress {
-    description = "TLS from VPC"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
   ingress {
     description = "TLS from VPC"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${var.cidr_blocks}"]
   }
 
   egress {
