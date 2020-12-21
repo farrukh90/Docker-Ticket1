@@ -5,7 +5,7 @@ resource "null_resource" "ticket1" {
   provisioner "file" {
     connection {
       type        = "ssh"
-      user        = "centos"
+      user        = "ec2-user"
       private_key = "${file("~/.ssh/bob.rsa")}"
       host        = "${aws_instance.Test.public_ip}"
     }
@@ -15,7 +15,7 @@ resource "null_resource" "ticket1" {
   provisioner "remote-exec" {
     connection {
       type        = "ssh"
-      user        = "centos"
+      user        = "ec2-user"
       private_key = "${file("~/.ssh/bob.rsa")}"
       host        = "${aws_instance.Test.public_ip}"
     }
